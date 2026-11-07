@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#592d35" />
+  <title>DARKSHAM | Admin Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Darksham admin home">
+        <span class="brand-mark">D<span>.</span></span>
+        <span class="brand-copy"><strong>DARKSHAM</strong><small>FEST MANAGEMENT</small></span>
+      </a>
+
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav-list" aria-label="Main navigation">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">◫</span>Dashboard</button>
+      </nav>
+      <div class="side-label">FEST MANAGEMENT</div>
+      <nav class="nav-list">
+        <button class="nav-link" data-page="events"><span class="nav-icon">✳</span>Events</button>
+        <button class="nav-link" data-page="stalls"><span class="nav-icon">▦</span>Stalls</button>
+        <button class="nav-link" data-page="announcements"><span class="nav-icon">▤</span>Announcements</button>
+        <button class="nav-link" data-page="schedule"><span class="nav-icon">◷</span>Schedule</button>
+        <button class="nav-link" data-page="sponsors"><span class="nav-icon">◇</span>Sponsors</button>
+      </nav>
+      <div class="side-label">CONTENT & SYSTEM</div>
+      <nav class="nav-list">
+        <button class="nav-link" data-page="media"><span class="nav-icon">▧</span>Media library</button>
+        <button class="nav-link" data-page="settings"><span class="nav-icon">⚙</span>Fest settings</button>
+        <button class="nav-link" data-page="activity"><span class="nav-icon">↗</span>Activity log</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="fest-mini">
+          <span class="mini-orb"></span>
+          <div><strong>Fest workspace</strong><small>2026 edition</small></div>
+          <span class="live-dot"></span>
+        </div>
+        <button class="profile-button" id="profileButton">
+          <span class="avatar">SK</span>
+          <span class="profile-copy"><strong>Shubham Kumar</strong><small>Super Admin</small></span>
+          <span class="profile-more">•••</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button mobile-menu" id="menuToggle" aria-label="Open menu">☰</button>
+          <div class="breadcrumb">DARKSHAM <span>/</span> <strong id="crumb">Overview</strong></div>
+        </div>
+        <div class="topbar-actions">
+          <span class="top-date" id="todayLabel"></span>
+          <button class="icon-button notification-button" title="Notifications" aria-label="Notifications">♧<i></i></button>
+          <span class="top-avatar">SK</span>
+        </div>
+      </header>
+
+      <div class="content-wrap">
+        <section class="page-view active" id="page-dashboard">
+          <div class="page-heading dashboard-heading">
+            <div><p class="eyebrow">SATURDAY, FEST WORKSPACE</p><h1>Good afternoon, Shubham<span class="heading-period">.</span></h1><p class="subheading">Here’s what’s happening across your fest today.</p></div>
+            <button class="button button-primary" data-action="quick-add"><span>＋</span> Quick create</button>
+          </div>
+
+          <div class="hero-panel">
+            <div class="hero-copy">
+              <span class="hero-kicker"><span class="pulse"></span> YOUR FEST AT A GLANCE</span>
+              <h2>Make every<br><em>moment count.</em></h2>
+              <p>One place to shape the experience, coordinate the details and keep DARKSHAM moving.</p>
+              <button class="button button-light" data-page-link="events">Manage events <span>↗</span></button>
+            </div>
+            <div class="hero-art" aria-hidden="true">
+              <div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
+              <div class="art-disc"><span>D</span><small>26</small></div>
+              <div class="art-star star-one">✳</div><div class="art-star star-two">✳</div>
+              <div class="art-caption">IDEAS INTO<br>EXPERIENCES</div>
+            </div>
+            <div class="hero-index">01 / 04</div>
+          </div>
+
+          <div class="section-title-row"><div><p class="eyebrow">THE NUMBERS</p><h2>Fest overview</h2></div><span class="muted-note">Live workspace data</span></div>
+          <div class="stats-grid" id="statsGrid"></div>
+
+          <div class="dashboard-grid">
+            <section class="panel schedule-panel">
+              <div class="panel-heading"><div><p class="eyebrow">WHAT'S NEXT</p><h3>Upcoming schedule</h3></div><button class="text-button" data-page-link="schedule">View schedule ↗</button></div>
+              <div id="dashboardSchedule" class="compact-list"></div>
+            </section>
+            <section class="panel activity-panel">
+              <div class="panel-heading"><div><p class="eyebrow">LATEST CHANGES</p><h3>Recent activity</h3></div><button class="text-button" data-page-link="activity">All activity ↗</button></div>
+              <div id="dashboardActivity" class="activity-list"></div>
+            </section>
+          </div>
+          <div class="dashboard-bottom-note"><span class="note-symbol">✳</span><span><strong>A little reminder</strong> Keep event details and schedule timings up to date so your visitors always know what’s next.</span></div>
+        </section>
+
+        <section class="page-view" id="page-events">
+          <div class="page-heading"><div><p class="eyebrow">BUILD THE LINEUP</p><h1>Event management<span class="heading-period">.</span></h1><p class="subheading">Create, organize and publish the experiences that make the fest.</p></div><button class="button button-primary" data-create="events">＋ Add event</button></div>
+          <div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="eventsSearch" placeholder="Search events..." /></div><select id="eventsFilter" class="filter-select"><option value="all">All statuses</option><option value="published">Published</option><option value="draft">Draft</option><option value="archived">Archived</option></select><span class="toolbar-count" id="eventsCount"></span></div>
+          <div class="data-panel"><div class="table-scroll"><table><thead><tr><th>EVENT</th><th>CATEGORY</th><th>DATE & VENUE</th><th>STATUS</th><th>FEATURED</th><th></th></tr></thead><tbody id="eventsTable"></tbody></table></div></div>
+        </section>
+
+        <section class="page-view" id="page-stalls">
+          <div class="page-heading"><div><p class="eyebrow">THE FEST MARKETPLACE</p><h1>Stall management<span class="heading-period">.</span></h1><p class="subheading">Keep every stall, location and vendor detail in order.</p></div><button class="button button-primary" data-create="stalls">＋ Add stall</button></div>
+          <div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="stallsSearch" placeholder="Search stalls..." /></div><select id="stallsFilter" class="filter-select"><option value="all">All statuses</option><option value="published">Published</option><option value="draft">Draft</option></select><span class="toolbar-count" id="stallsCount"></span></div>
+          <div class="cards-grid" id="stallsGrid"></div>
+        </section>
+
+        <section class="page-view" id="page-announcements">
+          <div class="page-heading"><div><p class="eyebrow">KEEP EVERYONE IN THE LOOP</p><h1>Announcements<span class="heading-period">.</span></h1><p class="subheading">Share updates, highlight important news and set the right priority.</p></div><button class="button button-primary" data-create="announcements">＋ New announcement</button></div>
+          <div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="announcementsSearch" placeholder="Search announcements..." /></div><select id="announcementsFilter" class="filter-select"><option value="all">All statuses</option><option value="published">Published</option><option value="draft">Draft</option></select><span class="toolbar-count" id="announcementsCount"></span></div>
+          <div class="announcement-list" id="announcementsList"></div>
+        </section>
+
+        <section class="page-view" id="page-schedule">
+          <div class="page-heading"><div><p class="eyebrow">EVERYTHING IN ITS TIME</p><h1>Fest schedule<span class="heading-period">.</span></h1><p class="subheading">Build a clear timeline for each day of DARKSHAM.</p></div><button class="button button-primary" data-create="schedule">＋ Add activity</button></div>
+          <div class="schedule-toolbar"><div class="day-tabs" id="dayTabs"></div><span class="muted-note">Times are shown in local time</span></div>
+          <div class="timeline-panel" id="scheduleTimeline"></div>
+        </section>
+
+        <section class="page-view" id="page-sponsors">
+          <div class="page-heading"><div><p class="eyebrow">POWERED BY PARTNERS</p><h1>Sponsor management<span class="heading-period">.</span></h1><p class="subheading">Recognize the people and organizations supporting the fest.</p></div><button class="button button-primary" data-create="sponsors">＋ Add sponsor</button></div>
+          <div class="cards-grid sponsor-grid" id="sponsorsGrid"></div>
+        </section>
+
+        <section class="page-view" id="page-media">
+          <div class="page-heading"><div><p class="eyebrow">THE VISUAL ARCHIVE</p><h1>Media library<span class="heading-period">.</span></h1><p class="subheading">Keep banners, event artwork and sponsor assets together.</p></div><button class="button button-primary" data-create="media">＋ Add media</button></div>
+          <div class="media-note">This prototype stores media URLs and metadata in your browser. Connect cloud storage before using it for a live fest.</div>
+          <div class="media-grid" id="mediaGrid"></div>
+        </section>
+
+        <section class="page-view" id="page-settings">
+          <div class="page-heading"><div><p class="eyebrow">MAKE IT YOURS</p><h1>Fest settings<span class="heading-period">.</span></h1><p class="subheading">Manage the identity and key information shown across the public website.</p></div><button class="button button-primary" id="saveSettings">Save changes</button></div>
+          <div class="settings-layout">
+            <form class="panel settings-form" id="settingsForm">
+              <div class="form-section-title"><span>01</span><div><h3>Fest identity</h3><p>Core information for your public-facing website.</p></div></div>
+              <label>Fest name<input name="festName" value="DARKSHAM" required /></label>
+              <label>Tagline<input name="tagline" value="Ideas into experiences." /></label>
+              <div class="form-row"><label>Start date<input name="startDate" type="date" /></label><label>End date<input name="endDate" type="date" /></label></div>
+              <label>Venue<input name="venue" placeholder="College campus / venue" /></label>
+              <label>Contact email<input name="email" type="email" placeholder="hello@darksham.in" /></label>
+              <label>Instagram / social link<input name="social" type="url" placeholder="https://instagram.com/..." /></label>
+              <div class="form-section-title second"><span>02</span><div><h3>Homepage message</h3><p>Control the main introduction visitors see.</p></div></div>
+              <label>Hero headline<input name="heroTitle" value="Make every moment count." /></label>
+              <label>Hero description<textarea name="heroDescription" rows="3">A celebration of ideas, technology and creativity.</textarea></label>
+            </form>
+            <aside class="panel settings-preview"><p class="eyebrow">LIVE PREVIEW</p><div class="preview-mark">D<span>.</span></div><h2 id="previewName">DARKSHAM</h2><p id="previewTagline">Ideas into experiences.</p><div class="preview-rule"></div><small>YOUR FEST. YOUR MOMENT.</small><div class="preview-orb"></div></aside>
+          </div>
+        </section>
+
+        <section class="page-view" id="page-activity">
+          <div class="page-heading"><div><p class="eyebrow">THE PAPER TRAIL</p><h1>Activity log<span class="heading-period">.</span></h1><p class="subheading">A record of changes made in this admin workspace.</p></div><button class="button button-secondary" id="clearActivity">Clear log</button></div>
+          <div class="data-panel"><div id="fullActivity" class="activity-list full-activity"></div></div>
+        </section>
+      </div>
+      <footer class="footer"><span>© 2026 DARKSHAM</span><span>MADE FOR THE MOMENTS THAT MATTER <b>✳</b></span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-heading"><div><p class="eyebrow">WORKSPACE EDITOR</p><h2 id="modalTitle">Create item</h2></div><button class="icon-button" id="closeModal" aria-label="Close">×</button></div>
+      <form id="editorForm"><div id="modalFields" class="modal-fields"></div><div class="modal-actions"><button type="button" class="button button-secondary" id="cancelModal">Cancel</button><button type="submit" class="button button-primary">Save item <span>↗</span></button></div></form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
